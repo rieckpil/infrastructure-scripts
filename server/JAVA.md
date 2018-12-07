@@ -18,10 +18,12 @@ sudo apt-get install -t jessie-backports openjdk-8-jdk
 ## Ubuntu 18.04
 
 ```
+sudo apt-get install openjdk-8-jdk
+```
+```
 vi /etc/enviroment
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64"
 source /etc/environment
-
 ```
 
 
@@ -40,4 +42,24 @@ export MAVEN_HOME=/usr/local/apache-maven
 export PATH=${M2_HOME}/bin:${PATH}
 
 source /etc/profile.d/apache-maven.sh
+```
+## Systemd Java 
+
+```
+[Unit]
+Description=PreTrack application
+After=syslog.target
+
+[Service]
+User=app
+ExecStart=/usr/lib/jvm/java-8-openjdk-amd64/bin/java -jar /home/app/workspace/backend/target/backend-0.0.1-SNAPSHOT.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```
+sudo systemctl enable service
+sudo systemctl daemon-reload
 ```

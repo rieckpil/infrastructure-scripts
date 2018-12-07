@@ -3,8 +3,7 @@
 ## NVM
 ```
 curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh -o install_nvm.sh
-sudo bash nodesource_setup.sh
-sudo apt install nodejs
+sudo bash install_nvm.sh
 ```
 ## Node
 ```
